@@ -3,7 +3,7 @@ Implementation in SageMath of polynomial-evaluation based Reverse Multiplication
 SageMath is a free open-source math software based on Python.
 
 **Requirements:**
-- [SageMath](https://www.sagemath.org/download.html)
+- [SageMath](https://www.sagemath.org/download.html) . See more info about usage [here](https://doc.sagemath.org/html/en/faq/faq-usage.html)
 - Python 3
 
 
