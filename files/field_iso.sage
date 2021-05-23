@@ -18,8 +18,8 @@
 
 
 #Trying to decrease complexity for the case of RMFE_23, by precomputing part of the .
-H51.<c51>=GF(2^51, modulus="primitive")
-h51=H51.modulus()
+#H51.<c51>=GF(2^51, modulus="primitive")
+#h51=H51.modulus()
 
 
 
@@ -28,13 +28,12 @@ def field_iso_desc(m,d,g,h,F,H,P,R):
     hR=R(h)
     Y=R.gen()
     a=R.base_ring().gen()
-    if h==h51:
-        s=R(a^2*Y^49 + a*Y^47 + a*Y^46 + a^2*Y^45 + a^2*Y^44 + a*Y^43 + a^2*Y^42 + a*Y^41 + a*Y^40 + a*Y^39 + a^2*Y^38 + a^2*Y^37 + a*Y^35 + a*Y^34 + (a^2 + a)*Y^33 + a*Y^32 + a^2*Y^31 + a^2*Y^30 + a*Y^29 + (a^2 + a)*Y^26 + a*Y^22 + a^2*Y^21 + a^2*Y^19 + a*Y^18 + a^2*Y^15 + a^2*Y^14 + (a^2 + a)*Y^13 + (a^2 + a)*Y^11 + (a^2 + a)*Y^10 + a*Y^9 + a^2*Y^6 + a*Y^5 + a^2*Y^4 + (a^2 + a)*Y^3 + a^2*Y^2 + a^2 + 1)
+    #if h==h51:
+    #    s=R(a^2*Y^49 + a*Y^47 + a*Y^46 + a^2*Y^45 + a^2*Y^44 + a*Y^43 + a^2*Y^42 + a*Y^41 + a*Y^40 + a*Y^39 + a^2*Y^38 + a^2*Y^37 + a*Y^35 + a*Y^34 + (a^2 + a)*Y^33 + a*Y^32 + a^2*Y^31 + a^2*Y^30 + a*Y^29 + (a^2 + a)*Y^26 + a*Y^22 + a^2*Y^21 + a^2*Y^19 + a*Y^18 + a^2*Y^15 + a^2*Y^14 + (a^2 + a)*Y^13 + (a^2 + a)*Y^11 + (a^2 + a)*Y^10 + a*Y^9 + a^2*Y^6 + a*Y^5 + a^2*Y^4 + (a^2 + a)*Y^3 + a^2*Y^2 + a^2 + 1)
 	   
-    else:
- 	p=R(hR/g)
+    p=R(hR/g)
     	#p=prod (g.map_coefficients(lambda z:z.frobenius(i)) for i in range(1,d)) #Computing product of Frobenius-conjugates of g, not including g.
-    	s=xgcd(p,g)[1]*p
+    s=xgcd(p,g)[1]*p
     
     q=s*m                                                       #Computing CRT-preimage of (m,0,0,...,0)
     r=q.map_coefficients(lambda z:z.trace())  				     #Computing result as sum of Frobenius-conjugates mod h (i.e. coefficients of q are mapped to their trace)
