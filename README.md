@@ -8,7 +8,7 @@ SageMath is a free open-source math software based on Python.
 - Python 3
 
 **Implementated notions:**
-So far constructions of RMFE over F2 based on polynomial interpolation, both direct (as (k1,e1)2-RMFE, (k1,e1)2-RMFE where k1=2 or 3 and e1>=2*k1-1) and as concatenation of 2 direct interpolation-based construction, namely the concatenation of a (k1,e1)2-RMFE and a (k2,e2)2^e1-RMFE, where k1,e1 are as above, k2<=2^e1+1, and e2>=2*k2-1. See CCXY18.
+So far constructions of RMFE over F2 based on polynomial interpolation, both direct (as (k1,e1)2-RMFE, (k1,e1)2-RMFE where k1=2 or 3 and e1>=2+k1-1) and as concatenation of 2 direct interpolation-based construction, namely the concatenation of a (k1,e1)2-RMFE and a (k2,e2)2^e1-RMFE, where k1,e1 are as above, k2<=2^e1+1, and e2>=2*k2-1. See CCXY18.
 
 **Main files:**
  - files/twostepinstance.sage:
