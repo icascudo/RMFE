@@ -32,7 +32,8 @@ This is except for lowlevel.py and pypolyfunctions.py which are directly written
  A test file for the functions defined in files/twostepRMFE.sage can be found in files/
  Precomputed generator matrices and diverse data used for several articles can be found in folder files/output_data. They have been created with the file /files/matrices.sage. TODO: Explanation of the different files.
   
-**References:**
+**Some References:**
+ - [BMN17] (https://eprint.iacr.org/2018/395) Block, Maji, Nguyen: Secure computation with constant communication overhead using multiplication embeddings. Indocrypt 18.
  - [CCXY18] (https://eprint.iacr.org/2018/429.pdf) Cascudo, Cramer, Xing, Yuan: Amortized Complexity of Information-Theoretically Secure MPC Revisited. Crypto 18. 
  - [CG20] (https://eprint.iacr.org/2020/162.pdf) Cascudo, Gundersen: A Secret-Sharing Based MPC Protocol for Boolean Circuits with Good Amortized Complexity. TCC 20.
  - [PS21] (https://eprint.iacr.org/2020/1412.pdf) Polychroniadou, Song: Constant-Overhead Unconditionally Secure Multiparty Computation over Binary Fields. Eurocrypt 21.
