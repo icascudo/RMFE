@@ -15,11 +15,13 @@ So far constructions of RMFE over F2 based on polynomial interpolation, both dir
  Parameters are specified by the class instance specified in file twostepinstance.sage. Defining an object in that class requires parameters k1,k2,e1,e2. It creates all parameters for a (k,e)-RMFE, stored as variables of the object, including k,e, the intermediate field F=F2^e1 and output field H=F2^e2 and their generator polynomials f, h (namely H=F_2[X]/(h), same with F and f). These polynomials are decided by SAGE, and can be modified as instance.h=instance.R(polynomial) where polynomial is written as X^i1+X^i2+...
 
  - files/twostepRMFE.sage:
- Contains functions computing the application of phi and psi of the RMFE (nevertheless, if the same RMFE is going to be used several times it is recommended to create the generator matrices with the file below, and compute results as a matrix vector multiplication)
+ Contains functions computing the application of phi and psi of the RMFE. Nevertheless, if the same RMFE is going to be used several times it is recommended to create the generator matrices with the file below, and compute results as a matrix vector multiplication, which is much faster. In addition there are precomputed matrices for selected RMFEs at files/output_data
 
  - files/matrices.sage:
  Creates generator matrices for a given instance of RMFE.
 
+ - files/RMFEmapsfrommatrices.sage:
+ Computes images of vectors by the(extended, see[CG21]) maps Phi and Psi, reading them from files. TODO: Store these as attributes of the instance class. It also contains tests making sure the RMFE property is correct.
 
 
 **Usage:**
@@ -30,14 +32,14 @@ This is except for lowlevel.py and pypolyfunctions.py which are directly written
  
  - **Examples:**
  A test file for the functions defined in files/twostepRMFE.sage can be found in files/
- Precomputed generator matrices and diverse data used for several articles can be found in folder files/output_data. They have been created with the file /files/matrices.sage. TODO: Explanation of the different files.
+ Precomputed generator matrices and diverse data used for several articles, especially [CG21], can be found in folder files/output_data. They have been created with the file /files/matrices.sage. TODO: Explanation of the different files.
   
 **Some References:**
  - [BMN17] (https://eprint.iacr.org/2018/395) Block, Maji, Nguyen: Secure computation with constant communication overhead using multiplication embeddings. Indocrypt 18.
  - [CCXY18] (https://eprint.iacr.org/2018/429.pdf) Cascudo, Cramer, Xing, Yuan: Amortized Complexity of Information-Theoretically Secure MPC Revisited. Crypto 18. 
  - [CG20] (https://eprint.iacr.org/2020/162.pdf) Cascudo, Gundersen: A Secret-Sharing Based MPC Protocol for Boolean Circuits with Good Amortized Complexity. TCC 20.
  - [PS21] (https://eprint.iacr.org/2020/1412.pdf) Polychroniadou, Song: Constant-Overhead Unconditionally Secure Multiparty Computation over Binary Fields. Eurocrypt 21.
- - [CG21] Cascudo, Giunta. Ongoing work. 
+ - [CG21] (https://eprint.iacr.org/2021/694) Cascudo, Giunta: On Interactive Oracle Proofs for Boolean R1CS Statements. Preprint, May 2021. 
 
 
 
