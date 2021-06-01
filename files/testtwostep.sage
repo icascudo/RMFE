@@ -2,35 +2,23 @@
 
 from twostepRMFE import *
 from twostepinstance import *
+import sys
 
 ################################ TEST FOR 2step RMFE ###########################################
 
 ################################ PARAMETERS #################################### 
 
+
 #Instance parameters (k1,e1,k2,e2) where k1=2 or 3, 2*k1<=e1+1, k2<=2^e1+1, 2*k2-1<=e2 
-instance=twostepinstance(3,5,33,65)
+if len(sys.argv)==5:
+	inp=map(int, sys.argv[1:5])
+	instance=twostepinstance(inp[0],inp[1],inp[2],inp[3])
+else:
+	instance=twostepinstance(2,4,15,30)
 
-k1=instance.k1
-k2=instance.k2
-e1=instance.e1
-e2=instance.e2
 k=instance.k
-e=instance.e
-m1=instance.m1
-m2=instance.m2
-F=instance.F
-a=instance.a
-H=instance.H
-c=instance.c
-P=instance.P
-X=instance.X
-R=instance.R
-Y=instance.Y
-f=instance.f
-h=instance.h
-g=instance.g
 
-input_length=5*k-4
+input_length=k
 ################################ START TEST #################################### 
 print ('TEST FOR 2step RME')
 
@@ -47,7 +35,7 @@ f=phi_RMFE(v,instance)
 g=phi_RMFE(w,instance)
 print ('Initial vector', v, 'is embedded in', f, 'whose elements belong to', (f[0]).parent())
 print ('Initial vector', w, 'is embedded in', g, 'whose elements belong to', (g[0]).parent())
-h=[f[i]*g[i] for i in range(len(f))]
+h=map(lambda x,y:x*y, f,g)
 print ('Product', h)
 
 #The vector profile will tell psi how to parse the output: this is because, since the implementation of phi allows vectors of arbitrary length and parses the input (splits the input in sub-blocks) accordingly (as a vector in (F_2)^k x...x (F_2)^k x F_2^(k'), k'<=k ), psi needs to produce the same parsing, which is input as a vector profile=(s,s,...,s,s')

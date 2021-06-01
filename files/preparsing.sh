@@ -1,4 +1,4 @@
-for FILE in FFTpreproc FFTa field_iso testtwostep twostepRMFE twostepinstance polyintereval generatormatrix
+for FILE in FFTpreproc FFTa field_iso testtwostep twostepRMFE twostepinstance polyintereval generatormatrix matrices
 
 do
 	sage -preparse $FILE.sage

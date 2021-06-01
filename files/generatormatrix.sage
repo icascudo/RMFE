@@ -10,7 +10,7 @@ def generatormatrixphi(instance):
 		Result.append(phi_RMFE(v,instance))
 	return Result
 
-#Generates the generator "matrix" (in this case a vector) over H where the i-th element is the image of the i-th unit vector. Elements are given in the basis 1,c,c^2,... where h(c)=0, for the representing polynomial h=instance.h
+#Generates the generator "matrix" (in this case a column vector) over H where the i-th element is the image of the i-th unit vector. Elements are given in the basis 1,c,c^2,... where h(c)=0, for the representing polynomial h=instance.h
 def generatormatrixphi_element(instance):
 	genmat=generatormatrixphi(instance)
 	return matrix(instance.H, instance.k, 1, lambda i, j: genmat[i][0])
@@ -38,3 +38,8 @@ def Kerpsi(instance):
 def KerS_o_psi(instance):
 	M=generatormatrixS_o_psi(instance)
 	return M.kernel().basis()
+
+def phi_of_one(instance):
+	return phi_RMFE([GF(2)(1)]*instance.k,instance)[0]._vector_()
+
+

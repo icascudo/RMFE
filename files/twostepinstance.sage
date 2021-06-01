@@ -29,8 +29,10 @@ class twostepinstance:
 		self.m1 = 2**e1
 		self.m2 = 2**(self.e) 
 		self.F = GF(self.m1, names=('a',))
-		(self.a,) = self.F._first_ngens(1)		
-		self.H = GF(self.m2, modulus="primitive", names=('c',))
+		(self.a,) = self.F._first_ngens(1)
+		self.B = [self.a^i for i in range(self.e1)]       #Only needed if computing evaluation and interpolation via additive FFT.		
+		#self.H, self.isoFH = self.F.extension(self.e2, map=True)   
+                self.H = GF(self.m2, modulus="primitive", names=('c',))
 		(self.c,) = self.H._first_ngens(1)
 		self.P = PolynomialRing(GF(2), names=('X',))
 		(self.X,) = self.P._first_ngens(1)
@@ -38,6 +40,10 @@ class twostepinstance:
 		(self.Y,) = self.R._first_ngens(1)
 		self.f = self.F.modulus()
 		self.h = self.H.modulus()
-		self.g = self.R(self.h).factor()[0][0]
-		
+
+#Next three atributes are needed for computation of field representation change (at field_iso).
+		self.hR = self.R(self.h)                          #See h, initially a polynomial in P=F_2[X], as a polynomial in R=F[Y], where F is the intermediate field. 
+		self.g = self.hR.factor()[0][0]			  #One factor of h as a polynomial in F[Y] (where it is not irreducible)
+		self.isopol= self.R(self.hR/self.g)	          #Computing product of Frobenius-conjugates of g, not including g. 
+
 		

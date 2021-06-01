@@ -20,14 +20,12 @@ def interpol(w,instance):
 	R=instance.R
 	Y=instance.Y
 
-	B=[a**i for i in range(e1)]
+	B=instance.B
 	if len(w)==_sage_const_2 **e1 or len(w)==_sage_const_2 **e1+_sage_const_1 :
 		
 		data=FFTpreproc(e1,B)
 		v2=invbinaryFFT(w,e1,B,data)
-		p=_sage_const_0 
-		for i in range(len(v2)):
-			p+=v2[i]*Y**i
+		p=sum (v2[i]*Y**i for i in range(len(v2)))
 		#Adjust evaluation at point at infinity if necessary. 
 		if len(w)==_sage_const_2 **e1+_sage_const_1 :
 			p+=w[m1]*(Y**m1-Y)
@@ -54,8 +52,10 @@ def eval(p,instance):
 	if len(p)==_sage_const_2 **e1 or _sage_const_2 **e1+_sage_const_1 :
 		
 		data=FFTpreproc(e1,B)
-		v2=binaryFFT(p,e1,B,data)
+		v2=binaryFFT(p[_sage_const_0 :_sage_const_2 **e1],e1,B,data)
 		return v2
+		if len(w)==_sage_const_2 **e1+_sage_const_1 :
+			w.append(p[-_sage_const_1 ])
 			
 	else:
 		EvalPoints=lin(B)[:len(p)]
