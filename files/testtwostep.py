@@ -20,26 +20,7 @@ if len(sys.argv)==_sage_const_5 :
 else:
 	instance=twostepinstance(_sage_const_2 ,_sage_const_4 ,_sage_const_15 ,_sage_const_30 )
 
-
-k1=instance.k1
-k2=instance.k2
-e1=instance.e1
-e2=instance.e2
 k=instance.k
-e=instance.e
-m1=instance.m1
-m2=instance.m2
-F=instance.F
-a=instance.a
-H=instance.H
-c=instance.c
-P=instance.P
-X=instance.X
-R=instance.R
-Y=instance.Y
-f=instance.f
-h=instance.h
-g=instance.g
 
 input_length=k
 ################################ START TEST #################################### 
@@ -81,10 +62,10 @@ print ('Supposed', m_sup)
 
 #Timing:
 #Timing phi:
-t=timeit('f=phi_RMFE(v,instance)', seconds=True)
+#t=timeit('f=phi_RMFE(v,instance)', seconds=True)
 #Timing psi:
-t1=timeit('m=psi_RMFE(h,profile,instance)', seconds=True)
-print (t, t1)
+#t1=timeit('m=psi_RMFE(h,profile,instance)', seconds=True)
+#print (t, t1)
 
 
 #########################################

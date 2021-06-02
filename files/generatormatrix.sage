@@ -33,11 +33,12 @@ def generatormatrixS_o_psi(instance):
 
 def Kerpsi(instance):
 	M=generatormatrixpsi(instance)
-	return M.kernel().basis()	
+	return [sum(v[i]*instance.c^i for i in range(len(v))) for v in M.kernel().basis()]
+			
 
 def KerS_o_psi(instance):
 	M=generatormatrixS_o_psi(instance)
-	return M.kernel().basis()
+	return [sum(v[i]*instance.c^i for i in range(len(v))) for v in M.kernel().basis()]
 
 def phi_of_one(instance):
 	return phi_RMFE([GF(2)(1)]*instance.k,instance)[0]._vector_()

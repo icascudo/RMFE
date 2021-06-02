@@ -12,30 +12,39 @@ So far constructions of RMFE over F2 based on polynomial interpolation, both dir
 
 **Main files:**
  - files/twostepinstance.sage:
- Parameters are specified by the class instance specified in file twostepinstance.sage. Defining an object in that class requires parameters k1,k2,e1,e2. It creates all parameters for a (k,e)-RMFE, stored as variables of the object, including k,e, the intermediate field F=F2^e1 and output field H=F2^e2 and their generator polynomials f, h (namely H=F_2[X]/(h), same with F and f). These polynomials are decided by SAGE, and can be modified as instance.h=instance.R(polynomial) where polynomial is written as X^i1+X^i2+...
+ Parameters are specified by the class instance specified in file twostepinstance.sage. Defining an object in that class requires parameters k1,k2,e1,e2. It creates all parameters for a (k,e)-RMFE, stored as variables of the object, including k=k1k2, e=e1e2, the intermediate field F=F2^e1 and output field H=F^e2=F2^(e1*e2)=F2^e and their generator polynomials f, h (namely H=F_2[X]/(h), same with F and f). These polynomials are decided by SAGE, and can be modified as instance.h=instance.R(polynomial) where polynomial is written as X^i1+X^i2+...
 
  - files/twostepRMFE.sage:
  Contains functions computing the application of phi and psi of the RMFE. Nevertheless, if the same RMFE is going to be used several times it is recommended to create the generator matrices with the file below, and compute results as a matrix vector multiplication, which is much faster. In addition there are precomputed matrices for selected RMFEs at files/output_data
 
- - files/matrices.sage:
- Creates generator matrices for a given instance of RMFE.
+ - files/generatormatrix.sage:
+ Contains functions to create generator matrices for phi and psi for a given instance, and other useful algebraic data for papers such as [CG21]
 
  - files/RMFEmapsfrommatrices.sage:
- Computes images of vectors by the(extended, see[CG21]) maps Phi and Psi, reading them from files. TODO: Store these as attributes of the instance class. It also contains tests making sure the RMFE property is correct.
+ Functions to apply generator matrices and sample from spaces created with the functions at files/generatormatrix.sage.
+
+ - files/matrices.sage:
+ Writes generator matrices and other data of a given instance to file in files/outputdata/ 
+
+
+**Test files:**
+ 
+ - files/testtwostepRMFE.sage: Test that computation of Phi and Psi from the functions at files/twostepRMFE.sage is correct.
+ 
+ - files/testRMFEmapsfrommatrices.sage: Test that computation of Phi and Psi from the functions at files/RMFEmapsfrommatrices.sage and the stored matrices in files is correct. 
 
 
 **Usage:**
  
  - **Modifying files:**
  Easiest is to modify the .sage files, and then execute `./preparse.sh`(within the /files folder) . The .py files are automatically generated from the .sage files. 
-This is except for lowlevel.py and pypolyfunctions.py which are directly written as Python files, and can be modified directly.
+This is except for lowlevel.py, taylor.py and pypolyfunctions.py which are directly written as Python files, and can be modified directly.
  
- - **Examples:**
- A test file for the functions defined in files/twostepRMFE.sage can be found in files/
+ - **Precomputed data:**
  Precomputed generator matrices and diverse data used for several articles, especially [CG21], can be found in folder files/output_data. They have been created with the file /files/matrices.sage. TODO: Explanation of the different files.
   
 **Some References:**
- - [BMN17] (https://eprint.iacr.org/2018/395) Block, Maji, Nguyen: Secure computation with constant communication overhead using multiplication embeddings. Indocrypt 18.
+ - [BMN18] (https://eprint.iacr.org/2018/395) Block, Maji, Nguyen: Secure computation with constant communication overhead using multiplication embeddings. Indocrypt 18.
  - [CCXY18] (https://eprint.iacr.org/2018/429.pdf) Cascudo, Cramer, Xing, Yuan: Amortized Complexity of Information-Theoretically Secure MPC Revisited. Crypto 18. 
  - [CG20] (https://eprint.iacr.org/2020/162.pdf) Cascudo, Gundersen: A Secret-Sharing Based MPC Protocol for Boolean Circuits with Good Amortized Complexity. TCC 20.
  - [PS21] (https://eprint.iacr.org/2020/1412.pdf) Polychroniadou, Song: Constant-Overhead Unconditionally Secure Multiparty Computation over Binary Fields. Eurocrypt 21.

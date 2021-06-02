@@ -35,7 +35,7 @@ class twostepinstance:
 		self.F = GF(self.m1, names=('a',))
 		(self.a,) = self.F._first_ngens(_sage_const_1 )
 		self.B = [self.a**i for i in range(self.e1)]       #Only needed if computing evaluation and interpolation via additive FFT.		
-		#self.H, self.isoFH = self.F.extension(self.e2, map=True)
+		#self.H, self.isoFH = self.F.extension(self.e2, map=True)   
                 self.H = GF(self.m2, modulus="primitive", names=('c',))
 		(self.c,) = self.H._first_ngens(_sage_const_1 )
 		self.P = PolynomialRing(GF(_sage_const_2 ), names=('X',))
