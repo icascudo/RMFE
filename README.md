@@ -50,6 +50,6 @@ This is except for lowlevel.py, taylor.py and pypolyfunctions.py which are direc
  - [PS21] (https://eprint.iacr.org/2020/1412.pdf) Polychroniadou, Song: Constant-Overhead Unconditionally Secure Multiparty Computation over Binary Fields. Eurocrypt 21.
  - [CG21] (https://eprint.iacr.org/2021/694) Cascudo, Giunta: On Interactive Oracle Proofs for Boolean R1CS Statements. Preprint, May 2021. 
 
-
-
+**Acknowledgements:**
+This work has been partially supported by SECURING Project (PID2019-110873RJ-I00/MCIN/AEI/10.13039/501100011033)
 
